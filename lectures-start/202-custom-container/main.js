@@ -1,19 +1,19 @@
-import {mockWithVideo} from '../../libs/camera-mock.js';
+import { mockWithVideo } from '../../libs/camera-mock.js';
 
 const THREE = window.MINDAR.IMAGE.THREE;
 
 document.addEventListener('DOMContentLoaded', () => {
-  const start = async() => {
+  const start = async () => {
     mockWithVideo('../../assets/mock-videos/course-banner1.mp4');
 
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
-      container: document.body,
+      container: document.querySelector("#my-ar-container"),
       imageTargetSrc: '../../assets/targets/course-banner.mind',
     });
-    const {renderer, scene, camera} = mindarThree;
+    const { renderer, scene, camera } = mindarThree;
 
     const geometry = new THREE.PlaneGeometry(1, 1);
-    const material = new THREE.MeshBasicMaterial({color: 0x00ffff, transparent: true, opacity: 0.5});
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ffff, transparent: true, opacity: 0.5 });
     const plane = new THREE.Mesh(geometry, material);
 
     const anchor = mindarThree.addAnchor(0);
